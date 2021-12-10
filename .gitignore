@@ -1,3 +1,6 @@
+# all the inputs go here, and the rest is the template anyway
+*.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
