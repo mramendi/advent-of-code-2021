@@ -9,6 +9,6 @@ Rules:
 1. There are no rules
 2. No kill like overkill
 3. No force like brute force
-4. For the issue of self-contradicting rules see role 0
+4. For the issue of self-contradicting rules see rule 0
 
 
