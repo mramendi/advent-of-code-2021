@@ -1,3 +1,5 @@
+# NOTE: this was made with a hint from reddit, the "buckets meme" as it is called there
+
 f = open("input6.txt").readlines()
 fish = [int(x) for x in f[0].split(",")]
 buckets=[0]*9
