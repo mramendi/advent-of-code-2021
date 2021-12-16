@@ -44,12 +44,13 @@ def parse_packet(packet,depth):
             s_rest=s_rest[16:]
             s_subpackets=s_rest[:leng]
             s_rest=s_rest[leng:]
-            print("Lenght-based start:",leng,"at depth:",depth)
+            print("Length-based start:",leng,"at depth:",depth)
             content=[]
             while s_subpackets:
-                print("Lenght-based ongoing:",len(s_subpackets),"at depth:",depth)
+                print("Length-based ongoing:",len(s_subpackets),"at depth:",depth)
                 t_version,t_type,t_content,s_subpackets=parse_packet(s_subpackets,depth+1)
                 content.append(t_content)
+            print("Length-based completed at depth:",depth)
             return (version,type,content,s_rest)
         else:
             num=int(s_rest[1:12],2)
