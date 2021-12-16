@@ -14,6 +14,7 @@ def parse_packet(packet,depth):
 
     # if the packet is all zeros, it's the padding
     if packet.find("1")==-1:
+        print("zeros dropped")
         return(0,0,[],"")
 
     if depth==0:
