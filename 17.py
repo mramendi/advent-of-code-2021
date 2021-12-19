@@ -26,8 +26,8 @@ def fire(vx,vy):
     returns:
     >=0 - max y if target area was hit
     -1 if, by y<ymin, we still have x<xmin (never reached horizontally)
-    -2 if, by y<ymin, xmin<x<xmax, but target was never hit ("overstepped")
-    -3 if, by y<=ymax, x>xmax (overreached horizontally)
+    -2 if, by y<ymin, x>xmin, but target was never hit ("overstepped")
+    -3 if, by x>xmax, y>ymax (overreached horizontally)
     '''
     state=(0,0,vx,vy)
     max_y=0
@@ -38,7 +38,7 @@ def fire(vx,vy):
             max_y=y
         if (x<=xmax) and (x>=xmin) and (y<=ymax) and (y>=ymin):
             return max_y
-        if (y<=ymax) and (x>xmax):
+        if (y>ymax) and (x>xmax):
             return -3
         if y<ymin:
             if x<xmin:
@@ -59,7 +59,7 @@ ymax=int(s_ymax)
 
 max_y=0
 count=0
-for vy in range(-MAXTRY,MAXTRY+1):
+for vy in range(ymin,MAXTRY):
     vx=1
     while True:
         result=fire(vx,vy)
@@ -69,8 +69,8 @@ for vy in range(-MAXTRY,MAXTRY+1):
             max_y=result
         if result==-3:
             break # an overshot ends the loop
-        if vx>=MAXTRY:
-            break # failsafe in case the vy can never lead to an overshot
+        if vx>=xmax:
+            break # with vx>max_x we can't hit the area, guaranteed overshot
         vx+=1
 
 print ("Part 1:", max_y)
